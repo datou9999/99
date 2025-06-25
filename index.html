@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>自动拨号</title>
+  <script>
+    async function autoDial() {
+      try {
+        const res = await fetch("phone.json");
+        const data = await res.json();
+        if (data.number) {
+          window.location.href = "tel:" + data.number;
+        } else {
+          alert("没有获取到号码");
+        }
+      } catch (e) {
+        alert("网络错误");
+        console.error(e);
+      }
+    }
+  </script>
+</head>
+<body onload="autoDial()">
+  <p>正在跳转拨号界面...</p>
+</body>
+</html>
